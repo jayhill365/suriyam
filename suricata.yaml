@@ -50,15 +50,11 @@ vars:
     GENEVE_PORTS: 6081
     VXLAN_PORTS: 4789
     TEREDO_PORTS: 3544
-
 ##
-## Step 2: Select outputs to enable
-##
-
 # The default logging directory.  Any log or output file will be
 # placed here if it's not specified with a full path name. This can be
 # overridden with the -l command line parameter.
-default-log-dir: @e_logdir@
+default-log-dir: /home/pslearner/Desktop/Lab/
 
 # Global stats configuration
 stats:
