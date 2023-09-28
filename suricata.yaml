@@ -85,7 +85,7 @@ outputs:
 
   # Extensible Event Format (nicknamed EVE) event log in JSON format
   - eve-log:
-      enabled: @e_enable_evelog@
+      enabled: yes
       filetype: regular #regular|syslog|unix_dgram|unix_stream|redis
       filename: eve.json
       # Enable for multi-threaded eve.json output; output files are amended with
@@ -522,7 +522,7 @@ outputs:
   #
   # Note: limited by "stream.reassembly.depth"
   - tcp-data:
-      enabled: no
+      enabled: yes
       type: file
       filename: tcp-data.log
 
@@ -535,7 +535,7 @@ outputs:
   #
   # Note: limited by the body limit settings
   - http-body-data:
-      enabled: no
+      enabled: yes
       type: file
       filename: http-data.log
 
@@ -1204,7 +1204,7 @@ security:
       read:
         - /usr/
         - /etc/
-        - @e_sysconfdir@
+        - /etc/suricata 
 
   lua:
     # Allow Lua rules. Disabled by default.
@@ -1286,7 +1286,7 @@ unix-command:
 
 # Magic file. The extension .mgc is added to the value here.
 #magic-file: /usr/share/file/magic
-@e_magic_file_comment@magic-file: @e_magic_file@
+#@e_magic_file_comment@magic-file: @e_magic_file@
 
 # GeoIP2 database file. Specify path and filename of GeoIP2 database
 # if using rules with "geoip" rule option.
@@ -1803,7 +1803,7 @@ profiling:
     limit: 10
 
     # output to json
-    json: @e_enable_evelog@
+    json: true
 
   # per keyword profiling
   keywords:
@@ -2137,7 +2137,7 @@ napatech:
 ## Configure Suricata to load Suricata-Update managed rules.
 ##
 
-default-rule-path: @e_defaultruledir@
+default-rule-path: /usr/share/suricata/rules
 
 rule-files:
   - suricata.rules
@@ -2146,8 +2146,8 @@ rule-files:
 ## Auxiliary configuration files.
 ##
 
-classification-file: @e_sysconfdir@classification.config
-reference-config-file: @e_sysconfdir@reference.config
+classification-file: /etc/suricata/classification.config
+reference-config-file: /etc/suricata/classification.config
 # threshold-file: @e_sysconfdir@threshold.config
 
 ##
